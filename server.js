@@ -7,6 +7,7 @@ import session from 'express-session'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
+import { passUserToView } from './middleware/middleware.js'
 
 // create the express app
 const app = express()
@@ -20,7 +21,7 @@ import('./config/passport.js')
 // require routes
 import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
-import { router as animeRouter } from './routes/anime.js'
+import { router as animeRouter } from './routes/animes.js'
 
 // view engine setup
 app.set(
@@ -51,6 +52,9 @@ app.use(
     }
   })
 )
+
+//custom middleware
+app.use(passUserToView)
 
 // passport middleware
 app.use(passport.initialize())

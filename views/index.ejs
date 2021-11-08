@@ -13,7 +13,9 @@
     </div>
   <% } %>
   <div>
-    <a href="/anime" class='btn btn-primary'>Search Anime</a>
+    <form action="/anime/results" method="POST">
+      <input type="search" name="search" placeholder="Search Anime">
+    </form>
   </div>
 </main>
 

@@ -3,8 +3,8 @@ import * as animeCtrl from '../controllers/animes.js'
 
 const router = Router()
 
-// localhost999/anime/search
-router.get('/search', animeCtrl.index)
+// localhost999/anime/results
+router.post('/results', animeCtrl.index)
 
 
 export{

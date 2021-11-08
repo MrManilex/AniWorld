@@ -1,0 +1,18 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<%- include('../partials/nav') %>
+
+<h1>Working</h1>
+<% if (results) {%> 
+  <main>
+    <% results.forEach(anime => { %>
+      <div class="card-body">
+        <p class="card-ttle"><%= anime.titles.en %> </p>
+        <p class="card-ttle"><%= anime.titles.jp %> </p>
+      </div>
+
+    <% }) %>
+  </main>
+<% } %> 
+
+<%- include('../partials/footer') %></link>
