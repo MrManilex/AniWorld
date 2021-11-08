@@ -23,6 +23,33 @@ function search(req, res){
   })
 }
 
+function show(req, res){
+  axios.get(`https://api.aniapi.com/v1/anime/${req.params.id}`,{
+    headers: {
+      'Authorization': `Bearer ${process.env.JWT}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => {
+      Anime.findOne({ anilistId: response.data.data.id})
+      .populate('collectedBy')
+      .then(anime => {
+        res.render('animes/show', {
+          title: 'Anime | Details',
+          anime,
+          results: response.data.data
+          // userHasAnime: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id))
+        })
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+}
+
 export{
-  search
+  search,
+  show
 }
