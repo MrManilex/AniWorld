@@ -4,7 +4,19 @@
 
 
 <main>
+  <img src="<%= results.banner_image %>" alt="<%= results.banner_img %>'s Image">
+  <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image">
+  <% if (results.trailer_url) {%> 
+    <iframe width="560" height="315" src="<%= results.trailer_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <% } %> 
   <h1><%= results.titles.en %> </h1>
+  <h2><%= results.titles.jp %> </h2>
+  <p><%= results.descriptions.en %> </p>
+  <ul>
+    <% results.genres.forEach(genre => { %>
+      <li><%= genre %> </li>
+    <% }) %>
+  </ul>
 </main>
 
 
