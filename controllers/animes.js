@@ -3,7 +3,8 @@ import { Anime } from '../models/anime.js'
 
 
 function search(req, res){
-  axios.get(`https://api.aniapi.com/v1/anime?title=${req.body.search}&nsfw=false`,{
+  const massagedSearch = req.body.search.split(' ').join('%20')
+  axios.get(`https://api.aniapi.com/v1/anime?title=${massagedSearch}`,{
     headers: {
       'Authorization': `Bearer ${process.env.JWT}`,
       'Content-Type': 'application/json',

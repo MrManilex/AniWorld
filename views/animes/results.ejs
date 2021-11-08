@@ -3,6 +3,11 @@
 <%- include('../partials/nav') %>
 
 <h1>Working</h1>
+<div>
+  <form action="/anime/results" method="POST">
+    <input type="search" name="search" placeholder="Search Anime">
+  </form>
+</div>
 <% if (results) {%> 
   <main>
     <% results.forEach(anime => { %>
