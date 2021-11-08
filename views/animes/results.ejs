@@ -3,7 +3,6 @@
 <%- include('../partials/nav') %>
 
 <h1>Working</h1>
-<h2>beginning-</h2>
 <% if (results) {%> 
   <main>
     <% results.forEach(anime => { %>
@@ -15,6 +14,8 @@
     <% }) %>
   </main>
 <% } %> 
-<h2>-end</h2>
+<% if (!results) { %>
+  <h2>No Results</h2>
+<% } %> 
 
 <%- include('../partials/footer') %></link>
