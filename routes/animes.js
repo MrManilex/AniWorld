@@ -4,7 +4,7 @@ import * as animeCtrl from '../controllers/animes.js'
 const router = Router()
 
 // localhost999/anime/results
-router.post('/results', animeCtrl.index)
+router.post('/results', animeCtrl.search)
 
 
 export{

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Anime } from '../models/anime.js'
 
 
-function index(req, res){
+function search(req, res){
   axios.get(`https://api.aniapi.com/v1/anime?title=${req.body.search}&nsfw=false`,{
     headers: {
       'Authorization': `Bearer ${process.env.JWT}`,
@@ -23,5 +23,5 @@ function index(req, res){
 }
 
 export{
-  index
+  search
 }
