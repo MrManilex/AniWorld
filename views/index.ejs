@@ -11,13 +11,14 @@
         alt="<%= user.profile.name %> avatar"
       >
     </div>
-  <% } %>
+  <% } else {%>
+    <img src="/images/funny/mei-sus.png" alt="mei-sus">
+    <% } %> 
   <div>
     <form action="/anime/results" method="POST">
       <input type="search" name="search" placeholder="Search Anime">
     </form>
   </div>
-  <img src="/images/funny/mei-sus.png" alt="mei-sus">
 </main>
 
 <%- include('./partials/footer') %>
