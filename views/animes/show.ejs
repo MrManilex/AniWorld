@@ -18,8 +18,8 @@
     <% }) %>
   </ul>
   <% if (!userAnimes) %> 
-    <form action="/animes/<%= results.id %>/addToList?_method=PATCH">
-      <input type="text" name="animeTitle" value="<%= results.title %>" hidden>
+    <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
+      <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
       <input type="text" name="animeId" value="<%= results.title %>" hidden>
       <input type="text" name="coverImage" value="<%= results.cover_image %>" hidden>
       <button class="btn btn-primary">

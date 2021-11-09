@@ -49,7 +49,27 @@ function show(req, res){
     })
 }
 
+function addToList(req, res){
+  Anime.findOne({ animeId: req.params.id })
+    .then(anime => {
+      if (anime){
+        anime.collectedBy.push(req.user.profile._id)
+        anime.save()
+        .then(() => {
+          res.redirect(`/anime/${req.params.id}`)
+        })
+      } else {
+        req.body.collectedBy = req.user.profile._id
+        Anime.create(req.body)
+        .then(() => {
+          res.redirect(`/anime/${req.params.id}`)
+        })
+      }
+    })
+}
+
 export{
   search,
-  show
+  show,
+  addToList
 }
