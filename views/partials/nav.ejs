@@ -4,10 +4,12 @@
 </head>
 <body>
   <nav>
+    <a href="/" class="btn btn-primary">Home</a>
     <% if (user) { %>
       <a href="/auth/logout">
         <button class='btn btn-danger' type="submit">Logout</button>
       </a>
+      <img src="<%= user.profile.avatar %> " alt="avatar">
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
         <button type="submit" class="siwg">

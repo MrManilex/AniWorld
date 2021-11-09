@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { Anime } from '../models/anime.js'
+import axios from 'axios'
 
 
 function search(req, res){
