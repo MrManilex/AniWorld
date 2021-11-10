@@ -11,6 +11,8 @@ router.get('/:id', isLoggedIn, animeCtrl.show)
 
 router.patch('/:id/addToList', isLoggedIn, animeCtrl.addToList)
 
+router.patch('/:id/removeFromList', isLoggedIn, animeCtrl.removeFromList)
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.redirect("/auth/google");

@@ -67,8 +67,25 @@ function addToList(req, res){
     })
 }
 
+function removeFromList(req, res){
+  Anime.findOne({ animeId: req.params.id })
+    .then(anime => {
+      anime.collectedBy.remove({ _id: req.user.profile._id })
+      anime.save()
+        .then(() => {
+          res.redirect(`/anime/${req.params.id}`)
+        })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+    
+}
+
 export{
   search,
   show,
-  addToList
+  addToList,
+  removeFromList
 }
