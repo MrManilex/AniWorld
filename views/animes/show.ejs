@@ -17,15 +17,24 @@
       <li><%= genre %> </li>
     <% }) %>
   </ul>
-  <% if (!userAnimes) %> 
+  <% console.log(userAnimes) %> 
+  <% if (!userAnimes) { %> 
     <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
       <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
       <input type="text" name="animeId" value="<%= results.title %>" hidden>
       <input type="text" name="coverImage" value="<%= results.cover_image %>" hidden>
       <button class="btn btn-primary">
-        Add To List
+        Add to Watching
       </button> 
     </form>
+  <% } %> 
+  <% if (userAnimes) {%>
+    <form action="/anime/<%= results.id %>/removeFromList?_method=PATCH" method="POST">
+      <button class="btn btn-danger">
+        Remove from Watching
+      </button> 
+    </form>
+  <% } %> 
 </main>
 
 
