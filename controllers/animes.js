@@ -32,18 +32,18 @@ function show(req, res){
     }
   })
     .then(response => {
-      console.log(req.params.id)
+      console.log(response)
       console.log(response.data.data.id)
       Anime.findOne({ animeId: response.data.data.id})
-      .populate('collectedBy')
-      .then(anime => {
-        console.log(anime)
-        res.render('animes/show', {
-          title: 'Anime | Details',
-          results: response.data.data,
-          userAnimes: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id))
+        // .populate('collectedBy')
+        .then(anime => {
+          console.log(anime)
+          res.render('animes/show', {
+            title: 'Anime | Details',
+            results: response.data.data,
+            userAnimes: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id))
+          })
         })
-      })
     })
     .catch(err => {
       console.log(err)
