@@ -17,7 +17,6 @@
       <li><%= genre %> </li>
     <% }) %>
   </ul>
-  <%= console.log(userAnimes) %> 
   <% if (userAnimes === undefined) { %> 
     <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
       <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
