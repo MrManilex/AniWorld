@@ -36,7 +36,23 @@
 
   <h2>Reviews:</h2>
 
-  <a class="btn btn-success" href="/reviews/<%= results.id %>">Leave a Review</a>
+  <form action="/reviews/<%= results.id %>" method="POST">
+    <select class="form-select" name="rating">
+      <option selected>Rate</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <div class="input-group">
+      <span class="input-group-text">Review:</span>
+      <textarea class="form-control" name="content"></textarea>
+    </div>
+
+    <button class="btn btn-success">Add Review</button>
+  </form>
   
 </main>
 
