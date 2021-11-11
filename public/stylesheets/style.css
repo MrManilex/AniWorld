@@ -16,3 +16,7 @@ div.container{
 .avatar-img {
   height: 46px;
 }
+#default-img{
+  width: 15%;
+  height: 20%;
+}
