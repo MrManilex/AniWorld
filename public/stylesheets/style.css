@@ -4,11 +4,6 @@ nav{
 body{
   background-color: rgb(160, 160, 167);
 }
-main{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 div.container{
   display: flex;
   justify-content: flex-end;
