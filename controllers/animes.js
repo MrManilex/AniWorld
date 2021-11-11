@@ -38,7 +38,9 @@ function show(req, res){
           res.render('animes/show', {
             title: 'Anime | Details',
             results: response.data.data,
-            userAnimes: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id))
+            anime,
+            userAnimes: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id)),
+            userReviewed: anime?.reviews.some(profile => profile._id.equals(req.user.profile._id))
           })
         })
     })

@@ -17,7 +17,7 @@
       <li><%= genre %> </li>
     <% }) %>
   </ul>
-  <% if (userAnimes === false) { %> 
+  <% if (!userAnimes) { %> 
     <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
       <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
       <input type="text" name="animeId" value="<%= results.id %>" hidden>
@@ -26,7 +26,8 @@
         Add to Watching
       </button> 
     </form>
-  <% } else { %> 
+  <% }  %> 
+  <% if (userAnimes) { %> 
     <form action="/anime/<%= results.id %>/removeFromList?_method=PATCH" method="POST">
       <button class="btn btn-danger">
         Remove from Watching
@@ -34,8 +35,7 @@
     </form>
   <% } %> 
 
-  <h2>Reviews:</h2>
-
+  <% if (userAnimes && !userReviewed) { %> 
   <form action="/reviews/<%= results.id %>" method="POST">
     <select class="form-select" name="rating">
       <option selected>Rate</option>
@@ -53,7 +53,20 @@
 
     <button class="btn btn-success">Add Review</button>
   </form>
-  
+  <% } %> 
+
+  <h2>Reviews:</h2> 
+  <% if (anime?.reviews.length) { %>
+    <% anime.reviews.forEach(review => { %>
+      <% console.log(review) %> 
+      <div>
+        <h3>Reviwer: <%= review.author %> </h3>
+      </div>
+      <div>
+        <p><%= review.content %> </p>
+      </div>
+    <% }) %>
+  <% } %> 
 </main>
 
 
