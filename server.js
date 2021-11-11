@@ -54,12 +54,12 @@ app.use(
   })
 )
 
-//custom middleware
-app.use(passUserToView)
-
 // passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+//custom middleware
+app.use(passUserToView)
 
 // router middleware
 app.use('/', indexRouter)
