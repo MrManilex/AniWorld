@@ -46,7 +46,7 @@ function show(req, res){
             results: response.data.data,
             anime,
             userAnimes: anime?.collectedBy.some(profile => profile._id.equals(req.user.profile._id)),
-            userReviewed: anime?.reviews.some(profile => profile._id.equals(req.user.profile._id))
+            userReviewed: anime?.reviews.some(review => review.author.equals(req.user.profile._id))
           })
         })
     })

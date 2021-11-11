@@ -34,7 +34,6 @@
       </button> 
     </form>
   <% } %> 
-
   <% if (userAnimes && !userReviewed) { %> 
   <form action="/reviews/<%= results.id %>" method="POST">
     <select class="form-select" name="rating">
@@ -57,17 +56,10 @@
 
   <h2>Reviews:</h2> 
 
-  <% //console.log('Anime Beg') %> 
-  <% console.log(anime) %> 
-  <% //console.log('Anime End') %> 
-
   <% if (anime?.reviews.length) { %>
     <% anime.reviews.forEach(review => { %>
-      <% //console.log('Reveiw Beg') %> 
-      <% console.log(review) %> 
-      <% //console.log('Reveiw End') %> 
       <div>
-        <h3>Reviwer: <%= review.author.name %> </h3>
+        <h3> <%= review.author.name %> </h3>
       </div>
       <div>
         <p><%= review.content %> </p>
