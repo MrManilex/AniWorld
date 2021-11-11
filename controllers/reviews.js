@@ -5,7 +5,6 @@ function create(req, res){
   req.body.author = req.user.profile._id
   req.params.id = parseInt(req.params.id)
   req.body.anime = req.params.id
-  console.log(req.body)
   Review.create(req.body)
   .then(review => {
     Anime.findOne({animeId: req.params.id})

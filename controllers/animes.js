@@ -34,6 +34,12 @@ function show(req, res){
     .then(response => {
       Anime.findOne({ animeId: response.data.data.id})
         .populate('collectedBy')
+        .populate({
+          path: 'reviews',
+          populate: {
+            path: 'author'
+          }
+        })
         .then(anime => {
           res.render('animes/show', {
             title: 'Anime | Details',
