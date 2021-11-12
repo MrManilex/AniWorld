@@ -65,3 +65,11 @@ view when user is logged in.
 * AAU I want to be able to delete anime and songs from my collection
 * AAU I want to be able to see other users and their collection
 * AAU I want to be able to review a specific anime and give it a rating
+
+## Stretch Goals:
+
+* Being able to search for anime related songs and add them to user's favorites
+* Adding functionality to nav bar Anime, Songs, and About buttons
+* Fixing CSS for more of a cleaner look all around
+* DARK MODE
+* Show other users' profiles and see what they are watching and favorited
