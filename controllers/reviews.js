@@ -1,5 +1,6 @@
 import { Review } from "../models/animeReview.js"
 import { Anime } from '../models/anime.js'
+import { Profile } from "../models/profile.js"
 
 function create(req, res){
   req.body.author = req.user.profile._id
@@ -9,10 +10,15 @@ function create(req, res){
   .then(review => {
     Anime.findOne({animeId: req.params.id})
     .then(anime => {
-      anime.reviews.push(review._id)
-      anime.save()
-      .then(() => {
-        res.redirect(`/anime/${anime.animeId}`)
+      Profile.findById(req.user.profile._id)
+      .then(profile => {
+        anime.reviews.push(review._id)
+        profile.reviews.push(review._id)
+        anime.save()
+        profile.save()
+        .then(() => {
+          res.redirect(`/anime/${anime.animeId}`)
+        })
       })
     })
     .catch(err => {
