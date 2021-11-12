@@ -1,8 +1,10 @@
 <%- include('../partials/html-head') %>
+
 <%- include('../partials/nav') %>
 
 
 <main>
+  <% console.log(results) %> 
   <img src="<%= results.banner_image %>" alt="<%= results.banner_img %>'s Image">
   <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image">
   <% if (results.trailer_url) {%> 
@@ -10,7 +12,10 @@
   <% } %> 
   <h1><%= results.titles.en %> </h1>
   <h2><%= results.titles.jp %> </h2>
+  <p>Release Date: <%= results.start_date %> </p>
   <p><%= results.descriptions.en %> </p>
+  <p>Rating: <%= results.score %>/100 </p>
+  <p>Episodes: <%= results.episode_duration %> </p>
   <ul>
     <% results.genres.forEach(genre => { %>
       <li><%= genre %> </li>
