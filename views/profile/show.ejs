@@ -1,28 +1,44 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/home.css">
+<link rel="stylesheet" href="/stylesheets/profile/show.css">
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= profile.name %>'s Profile</h1>
-  <img src="<%= profile.avatar %>" alt="<%= profile.name %>'s avatar">
-  <h3>Reviews Made:</h3>
-  <% reviews.forEach(review => { %>
-    <ul>
-      <li>Anime ID: <%= review.anime %> </li>
-      <li>Rating: <%= review.rating %></li>
-      <li>Description: <%= review.content %> </li>
-    </ul>
-      <% }) %>
-    <h3>Currently Watching:</h3>
-    <% animes.forEach(anime => { %>
-      <ul>
-        <a href="/anime/<%= anime.animeId %>">
-          <img src="<%= anime.coverImage %>" alt="broken">
-        </a>
-        <li><%= anime.animeTitle %> </li>
-        <li>Anime ID: <%= anime.animeId %> </li>
-      </ul>
-    <% }) %>
+  <div class="top">
+    <div class="name block section">
+      <h1><%= profile.name %>'s Profile</h1>
+    </div>
+    <div class="img section">
+      <figure class= "image is-128x128">
+        <img class="is-rounded" src="<%= profile.avatar %>" alt="<%= profile.name %>'s avatar">
+      </figure>
+    </div>
+  </div>
+  <div class="meat">
+    <div class="reviews box section">
+      <h3>Reviews Made:</h3>
+      <% reviews.forEach(review => { %>
+        <ul>
+          <li>Anime ID: <%= review.anime %> </li>
+          <li>Rating: <%= review.rating %></li>
+          <li>Description: <%= review.content %> </li>
+        </ul>
+          <% }) %>
+    </div>
+    <div class="watching section">
+        <h3>Currently Watching:</h3>
+        <% animes.forEach(anime => { %>
+          <div class="anime">
+            <ul>
+              <a href="/anime/<%= anime.animeId %>">
+                <img src="<%= anime.coverImage %>" alt="broken">
+              </a>
+              <li><%= anime.animeTitle %> </li>
+              <li>Anime ID: <%= anime.animeId %> </li>
+            </ul>
+          </div>
+          <% }) %>
+      </div>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

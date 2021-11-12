@@ -1,0 +1,11 @@
+div.top{
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+}
+div.name{
+  align-self: center;
+}
+div.meat{
+  display: flex;
+}
