@@ -5,6 +5,10 @@ div.meat{
   display: flex;
   justify-content: flex-start;
 }
+div.meat-two{
+  display: flex;
+  justify-content: flex-start;
+}
 div.trailer{
   display: flex;
   justify-content: flex-end;

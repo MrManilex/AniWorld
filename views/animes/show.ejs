@@ -7,16 +7,34 @@
   <% console.log(results) %> 
   <div class="banner">
     <div class="banner-image" style="background-image: url('<%= results.banner_image %>');">
-      <!-- <img src="<%= //results.banner_image %>" alt="<%= //results.banner_img %>'s Image"> -->
     </div>
   </div>
   <div class="meat">
     <% if (results.cover_image) { %> 
     <div class="bloack cover-image section" >
-      <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image" >
+      <div>
+        <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image" >
+      </div>
+      <% if (!userAnimes) { %> 
+        <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
+          <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
+          <input type="text" name="animeId" value="<%= results.id %>" hidden>
+          <input type="text" name="coverImage" value="<%= results.cover_image %>" hidden>
+          <button class="btn btn-primary">
+            Add to Watching
+          </button> 
+        </form>
+      <% }  %> 
+      <% if (userAnimes) { %> 
+        <form action="/anime/<%= results.id %>/removeFromList?_method=PATCH" method="POST">
+          <button class="btn btn-danger">
+            Remove from Watching
+          </button> 
+        </form>
+      <% } %> 
     </div>
     <% } %> 
-    <div class="block contents section">
+    <div class="block contents section box">
       <h1><%= results.titles.en %> </h1>
       <h2><%= results.titles.jp %> </h2>
       <p>Description: <%= results.descriptions.en %> </p>
@@ -30,63 +48,52 @@
         <% } %> 
     </div>
   </div>
-  <div class="section block">
-    <h3>Genres</h3>
-    <ul>
-      <% results.genres.forEach(genre => { %>
-        <li><%= genre %> </li>
-      <% }) %>
-    </ul>
-  </div>
-  <% if (!userAnimes) { %> 
-    <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
-      <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>
-      <input type="text" name="animeId" value="<%= results.id %>" hidden>
-      <input type="text" name="coverImage" value="<%= results.cover_image %>" hidden>
-      <button class="btn btn-primary">
-        Add to Watching
-      </button> 
-    </form>
-  <% }  %> 
-  <% if (userAnimes) { %> 
-    <form action="/anime/<%= results.id %>/removeFromList?_method=PATCH" method="POST">
-      <button class="btn btn-danger">
-        Remove from Watching
-      </button> 
-    </form>
-  <% } %> 
-  <% if (userAnimes && !userReviewed) { %> 
-  <form action="/reviews/<%= results.id %>" method="POST">
-    <select class="form-select" name="rating">
-      <option selected>Rate</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-
-    <div class="input-group">
-      <span class="input-group-text">Review:</span>
-      <textarea class="form-control" name="content"></textarea>
+  <div class="meat-two">
+    <div class="section block">
+      <h3>Genres</h3>
+      <ul>
+        <% results.genres.forEach(genre => { %>
+          <li><%= genre %> </li>
+        <% }) %>
+      </ul>
     </div>
+    <div class="box section block">
+      <h2>Reviews:</h2> 
+    
+      <% if (anime?.reviews.length) { %>
+        <% anime.reviews.forEach(review => { %>
+          <div class="box">
+            <div>
+              <h3> <%= review.author.name %> </h3>
+            </div>
+            <div>
+              <p><%= review.content %> </p>
+            </div>
+          </div>
+        <% }) %>
+      <% } %> 
+      <% if (userAnimes && !userReviewed) { %> 
+      <form action="/reviews/<%= results.id %>" method="POST">
+        <select class="form-select" name="rating">
+          <option selected>Rate</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+    
+        <div class="input-group">
+          <span class="input-group-text">Review:</span>
+          <textarea class="form-control" name="content"></textarea>
+        </div>
+    
+        <button class="btn btn-success">Add Review</button>
+      </form>
+      <% } %> 
+    </div>
+  </div>
 
-    <button class="btn btn-success">Add Review</button>
-  </form>
-  <% } %> 
-
-  <h2>Reviews:</h2> 
-
-  <% if (anime?.reviews.length) { %>
-    <% anime.reviews.forEach(review => { %>
-      <div>
-        <h3> <%= review.author.name %> </h3>
-      </div>
-      <div>
-        <p><%= review.content %> </p>
-      </div>
-    <% }) %>
-  <% } %> 
 </main>
 
 
