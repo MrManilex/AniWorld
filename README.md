@@ -73,3 +73,5 @@ view when user is logged in.
 * Fixing CSS for more of a cleaner look all around
 * DARK MODE
 * Show other users' profiles and see what they are watching and favorited
+* Be able to change the status of 'Watching' to 'Plan to Watch'
+* Delete functionality to reviews
