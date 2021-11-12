@@ -1,10 +1,13 @@
 <%- include('./partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/home.css">
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>Welcome, <%= user ? user.profile.name : "friend" %></h1>
+  <div class="header block">
+    <h1>Welcome, <%= user ? user.profile.name : "friend" %></h1>
+  </div>
   <% if (user?.profile.avatar) { %>
-    <div class="block">
+    <div class=" img block">
       <figure class="image is-128x128">
         <img 
           class="is-rounded"
@@ -14,11 +17,15 @@
       </figure>
     </div>
   <% } else {%>
-    <img src="/images/funny/mei-sus.png" alt="mei-sus" id="default-img">
+    <div class="block default-img">
+      <figure class="image is-128x128">
+        <img class="is-rounded" src="/images/funny/mei-sus.png" alt="mei-sus" id="default-img">
+      </figure>
+    </div>
     <% } %> 
   <div class="block">
     <form action="/anime/results" method="POST">
-      <input type="search" name="search" placeholder="Search Anime">
+      <input class="input" type="search" name="search" placeholder="Search Anime">
     </form>
   </div>
 </main>
