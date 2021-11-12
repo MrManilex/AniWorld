@@ -1,26 +1,43 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/anime/show.css">
 <%- include('../partials/nav') %>
 
 
 <main>
   <% console.log(results) %> 
-  <img src="<%= results.banner_image %>" alt="<%= results.banner_img %>'s Image">
-  <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image">
-  <% if (results.trailer_url) {%> 
-    <iframe width="560" height="315" src="<%= results.trailer_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <% } %> 
-  <h1><%= results.titles.en %> </h1>
-  <h2><%= results.titles.jp %> </h2>
-  <p>Release Date: <%= results.start_date %> </p>
-  <p><%= results.descriptions.en %> </p>
-  <p>Rating: <%= results.score %>/100 </p>
-  <p>Episodes: <%= results.episode_duration %> </p>
-  <ul>
-    <% results.genres.forEach(genre => { %>
-      <li><%= genre %> </li>
-    <% }) %>
-  </ul>
+  <div class="banner">
+    <div class="banner-image" style="background-image: url('<%= results.banner_image %>');">
+      <!-- <img src="<%= //results.banner_image %>" alt="<%= //results.banner_img %>'s Image"> -->
+    </div>
+  </div>
+  <div class="meat">
+    <% if (results.cover_image) { %> 
+    <div class="bloack cover-image section" >
+      <img src="<%= results.cover_image %>" alt="<%= results.cover_image %>'s Image" >
+    </div>
+    <% } %> 
+    <div class="block contents section">
+      <h1><%= results.titles.en %> </h1>
+      <h2><%= results.titles.jp %> </h2>
+      <p>Description: <%= results.descriptions.en %> </p>
+      <p>Release Date: <%= results.start_date %> </p>
+      <p>Rating: <%= results.score %>/100 </p>
+      <p>Episodes: <%= results.episode_duration %> </p>
+    </div>
+    <div class="trailer block section">
+      <% if (results.trailer_url) {%> 
+        <iframe width="560" height="315" src="<%= results.trailer_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <% } %> 
+    </div>
+  </div>
+  <div class="section block">
+    <h3>Genres</h3>
+    <ul>
+      <% results.genres.forEach(genre => { %>
+        <li><%= genre %> </li>
+      <% }) %>
+    </ul>
+  </div>
   <% if (!userAnimes) { %> 
     <form action="/anime/<%= results.id %>/addToList?_method=PATCH" method="POST">
       <input type="text" name="animeTitle" value="<%= results.titles.en %>" hidden>

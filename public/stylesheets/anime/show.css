@@ -1,0 +1,11 @@
+div.banner-image{
+  height: 400px;
+}
+div.meat{
+  display: flex;
+  justify-content: flex-start;
+}
+div.trailer{
+  display: flex;
+  justify-content: flex-end;
+}
