@@ -4,16 +4,19 @@
 <main>
   <h1>Welcome, <%= user ? user.profile.name : "friend" %></h1>
   <% if (user?.profile.avatar) { %>
-    <div>
-      <img 
-        src="<%= user.profile.avatar %>" 
-        alt="<%= user.profile.name %> avatar"
-      >
+    <div class="block">
+      <figure class="image is-128x128">
+        <img 
+          class="is-rounded"
+          src="<%= user.profile.avatar %>" 
+          alt="<%= user.profile.name %> avatar"
+        >
+      </figure>
     </div>
   <% } else {%>
     <img src="/images/funny/mei-sus.png" alt="mei-sus" id="default-img">
     <% } %> 
-  <div>
+  <div class="block">
     <form action="/anime/results" method="POST">
       <input type="search" name="search" placeholder="Search Anime">
     </form>

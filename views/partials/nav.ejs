@@ -4,22 +4,54 @@
   <% } %>
 </head>
 <body>
-  <nav>
-    <div class="container">
-      <a href="/">
-        <button class="btn btn-primary">Home</button>
-      </a> 
-      <% if (user) { %>
-        <a href="/auth/logout">
-          <button class='btn btn-danger' type="submit">Logout</button>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="/images/funny/zen.png" width="40">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="/" class="navbar-item">
+          Home
         </a>
-        <img src="<%= user.profile.avatar %> " alt="avatar">
-      <% } else { %>
-        <a href="/auth/google" class="siwg-link">
-          <button type="submit" class="siwg">
-            <img id="siwg-image" alt="Sign in with Google" />
-          </button>
+        <a class="navbar-item">
+          Anime
         </a>
-      <% } %>
+        <a class="navbar-item">
+          Songs
+        </a>
+        <a class="navbar-item">
+          About
+        </a>
+      </div>
+  
+      <div class="navbar-end">
+        <% if (user) { %>
+        <div class="navbar-item">
+            <a href="/auth/logout" class="button is-light">
+              Logout
+            </a>
+        </div>
+        <a class="navbar-item">
+          <img src="<%= user.profile.avatar %> " alt="avatar">
+        </a>
+        <% } else { %>
+          <div class="navbar-item">
+            <a href="/auth/google" class="siwg-link">
+              <button type="submit" class="siwg">
+                <img id="siwg-image" alt="Sign in with Google" />
+              </button>
+            </a>
+          </div>
+          <% } %>
+      </div>
     </div>
   </nav>
