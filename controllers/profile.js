@@ -10,7 +10,7 @@ function show(req, res){
       Anime.find({ collectedBy: profile._id})
       .then(animes => {
         res.render('profile/show', {
-          title: 'Test',
+          title: 'Profile',
           profile,
           reviews,
           animes
