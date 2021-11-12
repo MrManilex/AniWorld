@@ -1,35 +1,45 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/anime/results.css">
 <%- include('../partials/nav') %>
 
-<h1>Search</h1>
-<div>
-  <form action="/anime/results" method="POST">
-    <input type="search" name="search" placeholder="Search Anime">
-  </form>
-</div>
-<% if (results) {%> 
-  <main>
-    <div class="container py-5 px-3">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-sm-5 px-4">
-        <% results.forEach(anime => { %>
-          <div class="col">
-            <div class="card bg-dark shadow-sm mt-3">
-              <% if (anime.cover_image) { %>
-                <img
-                src="<%= anime.cover_image %> " 
-                alt="<%= anime.cover_image %>'s Image"
-                width="100%"
-                height="100%"
-                >
-              <% } %> 
-              <div class="card-body">
-                <p class="card-ttle"><%= anime.titles.en %> </p>
-                <p class="card-ttle"><%= anime.titles.jp %> </p>
+<main>
+  <div class="search block">
+    <div class="block">
+      <h1>Search</h1>
+    </div>
+    <div class=" block">
+      <form action="/anime/results" method="POST">
+        <input type="search" name="search" placeholder="Search Anime">
+      </form>
+    </div>
+  </div>
+    <% if (results) {%> 
+    <div class="columns">
+      <% results.forEach(anime => { %>
+        <div class="column">
+          <% if (anime.cover_image) { %>
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="<%= anime.cover_image %>" alt="<%= anime.cover_image %>'s image">
+                </figure>
               </div>
-              <a href="/anime/<%= anime.id %>" class="btn btn-primary">Details</a>
+              <% } %> 
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4"><%= anime.titles.en %></p>
+                    <p class="subtitle is-5"><%= anime.titles.jp %></p>
+                  </div>
+                </div>
+                <div class="details">
+                  <a href="/anime/<%= anime.id %>" class="button is-info">Details</a>
+                </div>
+              </div>
             </div>
           </div>
-    <% }) %>
+        <% }) %>
+    </div>
     </div>
   </div>
   </main>

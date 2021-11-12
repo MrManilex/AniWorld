@@ -1,0 +1,8 @@
+div.search{
+  display: flex;
+  flex-direction: column;
+}
+div.search > div {
+  display: flex;
+  justify-content: center;
+}
