@@ -6,3 +6,7 @@ div.search > div {
   display: flex;
   justify-content: center;
 }
+div.columns{
+  display: flex;
+  flex-wrap: wrap;
+}
