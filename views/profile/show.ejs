@@ -1,0 +1,26 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/home.css">
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= profile.name %>'s Profile</h1>
+  <img src="<%= profile.avatar %>" alt="<%= profile.name %>'s avatar">
+  <h3>Reviews Made:</h3>
+  <% reviews.forEach(review => { %>
+    <ul>
+      <li>AnimeID: <%= review.anime %> </li>
+      <li>Rating: <%= review.rating %></li>
+      <li>Description: <%= review.content %> </li>
+    </ul>
+      <% }) %>
+    <h3>Currently Watching:</h3>
+    <% animes.forEach(anime => { %>
+      <ul>
+        <img src="<%= anime.coverImage %>" alt="broken">
+        <li><%= anime.animeTitle %> </li>
+        <li><%= anime.animeId %> </li>
+      </ul>
+    <% }) %>
+</main>
+
+<%- include('../partials/footer') %>
