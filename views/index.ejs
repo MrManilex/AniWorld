@@ -4,7 +4,7 @@
 
 <main>
   <div class="header block">
-    <h1>Welcome, <%= user ? user.profile.name : "friend" %></h1>
+    <h1>Welcome, <%= user ? user.profile.name : 'Guest' %></h1>
   </div>
   <% if (user?.profile.avatar) { %>
     <div class=" img block">
@@ -19,7 +19,7 @@
   <% } else {%>
     <div class="block default-img">
       <figure class="image is-128x128">
-        <img class="is-rounded" src="/images/funny/mei-sus.png" alt="mei-sus" id="default-img">
+        <img class="is-rounded" src="/images/funny/zen.png" alt="mei-sus" id="default-img">
       </figure>
     </div>
     <% } %> 
