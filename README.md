@@ -56,6 +56,7 @@ view when user is logged in.
 ## Credits:
 [Tanjiro image as default user and brand.](https://picsart.com/i/sticker-kimetsunoyaiba-zenitsu-demonslayer-anime-298408222188211)
 
+[AniApi](https://aniapi.com/) - Anime Database
 ## As a User Stories:
 
 * AAU I want to be able to log in and log out of my Google Account
