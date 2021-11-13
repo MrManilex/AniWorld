@@ -32,26 +32,25 @@
           About
         </a>
       </div>
-  
-      <!-- <div class="navbar-end"> -->
-        <!-- <%// if (user) { %>
-        <div class="navbar-item">
+      <div class="navbar-end">
+        <% if (user) { %>
+        <div class="navbar-item navbar-end">
             <a href="/auth/logout" class="button is-light">
               Logout
             </a>
         </div>
-        <a class="navbar-item" href="/profile/<%= //user.profile._id %>">
-            <img src="<%= //user.profile.avatar %> " alt="avatar">
+        <a class="navbar-item" href="/profile/<%= user.profile._id %>">
+            <img src="<%= user.profile.avatar %> " alt="avatar">
         </a>
-        <% //} else { %>
+        <% } else { %>
           <div class="navbar-item">
             <a href="/auth/google" class="siwg-link">
               <button type="submit" class="siwg">
                 <img id="siwg-image" alt="Sign in with Google" />
               </button>
             </a>
-          </div> -->
-          <!-- <%// } %>
-      </div> -->
+          </div>
+          <% } %>
+      </div>
     </div>
   </nav>
