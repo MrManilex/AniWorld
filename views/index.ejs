@@ -1,33 +1,36 @@
 <%- include('./partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/home.css">
-<%- include('./partials/nav') %>
+  <!-- <link rel="stylesheet" href="/stylesheets/home.css"> -->
+  <%- include('./partials/nav') %>
 
-<main>
-  <div class="header block">
-    <h1 class="title is-3">Welcome, <%= user ? user.profile.name : 'Guest' %></h1>
-  </div>
-  <% if (user?.profile.avatar) { %>
-    <div class="img block">
-      <figure class="image is-100x100">
-        <img 
-          class="is-rounded"
-          src="<%= user.profile.avatar %>" 
-          alt="<%= user.profile.name %> avatar"
-        >
-      </figure>
-    </div>
-  <% } else {%>
-    <div class="block default-img">
-      <figure class="image is-128x128">
-        <img class="is-rounded" src="/images/funny/zen.png" alt="mei-sus" id="default-img">
-      </figure>
-    </div>
-    <% } %> 
-  <div class="block">
-    <form action="/anime/results" method="POST">
-      <input class="input" type="search" name="search" placeholder="Search Anime">
-    </form>
-  </div>
-</main>
+    <main>
+      <section class="hero is-fullheight-with-navbar">
+        <div class="hero-body">
+          <div class="container is-max-desktop is-flex is-flex-direction-column is-align-items-center">
+            <div class="header block">
+              <h1 class="title is-3">Welcome, <%= user ? user.profile.name : 'Guest' %>
+              </h1>
+            </div>
+            <% if (user?.profile.avatar) { %>
+              <div class="img block ">
+                <figure class="image is-128x128">
+                  <img class="is-rounded" src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar">
+                </figure>
+              </div>
+              <% } else {%>
+                <div class="block">
+                  <figure class="image is-128x128">
+                    <img class="is-rounded" src="/images/funny/zen.png" alt="zenitsu" id="default-img">
+                  </figure>
+                </div>
+                <% } %>
+                  <div class="block">
+                    <form action="/anime/results" method="POST">
+                      <input class="input" type="search" name="search" placeholder="Search Anime" autocomplete="off">
+                    </form>
+                  </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-<%- include('./partials/footer') %>
+    <%- include('./partials/footer') %>
